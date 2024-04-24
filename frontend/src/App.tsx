@@ -2,13 +2,14 @@ import "./App.css";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 import CreateWithAI from "./components/CreateWithAI";
+import { Todo } from "../../common/types";
 
 function App() {
-  const data = [];
+  const data: Array<Todo> = [];
 
-  const handleCreate = async (data) => {
+  const handleCreate = async (data: Pick<Todo, "title" | "content">) => {
     const { title, content } = data;
-    console.log("handleCreate", title, content)
+    console.log("handleCreate", title, content);
   };
 
   const handleToggle = async (id: string, done: boolean) => {
@@ -23,7 +24,7 @@ function App() {
     console.log("handleCleanTodos");
   };
 
-  const handleCreateWithAI = async (data) => {
+  const handleCreateWithAI = async (data: { task: string }) => {
     const { task } = data;
     console.log("handleCreateWithAI", task);
   };

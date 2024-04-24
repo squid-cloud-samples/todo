@@ -1,4 +1,9 @@
-import { secureDatabase, SquidService } from '@squidcloud/backend';
+import {
+  secureDatabase,
+  SquidService,
+  TriggerRequest,
+} from "@squidcloud/backend";
+import { Todo } from "../../../common/types";
 
 /**
  * Here you can define different backend functions that:
@@ -16,8 +21,17 @@ import { secureDatabase, SquidService } from '@squidcloud/backend';
  */
 export class ExampleService extends SquidService {
   // TODO: !!!IMPORTANT!!! - Replace this function with your own granular security rules
-  @secureDatabase('all', 'built_in_db')
+  @secureDatabase("all", "built_in_db")
   allowAllAccessToBuiltInDb(): boolean {
     return true;
+  }
+
+  async onUpdateTodo(request: TriggerRequest): Promise<void> {
+    const { docBefore, docAfter } = request;
+    if (docBefore.done === docAfter.done) return;
+
+    await this.squid.collection<Todo>("todos").doc({ id: docAfter.id }).update({
+      updatedAt: new Date(),
+    });
   }
 }

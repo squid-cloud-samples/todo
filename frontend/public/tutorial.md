@@ -1,4 +1,5 @@
 ## Getting Started
+
 - In `main.tsx`, update the options passed `SquidContextProvider` with you `appId` and `squidDeveloperId`.
 - Run the `Create .env file` script in (found in the [Squid Console](https://console.squid.cloud)) in the `backend` directory.
 - Run `squid start` in the backend directory.
@@ -11,7 +12,7 @@ Querying for todos. In `App.tsx` add the following:
 import { useCollection, useQuery } from "@squidcloud/react"
 
 const App = () => {
-  const collection = useCollection('todos');
+  const collection = useCollection<Todo>('todos');
   // Replace `const data = []` with the following line:
   const { data } = useQuery(collection.query().dereference());
 
@@ -94,7 +95,7 @@ export class ExampleService extends SquidService {
 
   private async cleanTodosInternal() {
     const todoRefs = await this.squid
-      .collection("todos")
+      .collection<Todo>("todos")
       .query()
       .eq("done", true)
       .snapshot();
@@ -180,7 +181,7 @@ export class ExampleService extends SquidService {
     const { docBefore, docAfter } = request;
     if (docBefore.done === docAfter.done) return;
 
-    await this.squid.collection("todos").doc({ id: docAfter.id }).update({
+    await this.squid.collection<Todo>("todos").doc({ id: docAfter.id }).update({
       updatedAt: new Date(),
     });
   }
@@ -192,7 +193,7 @@ export class ExampleService extends SquidService {
 
 ```typescript
 
-import { webhook, WebhookRequest } from "@squidcloud/backend";
+import { webhook, WebhookRequest, WebhookResponse } from "@squidcloud/backend";
 
 export class ExampleService extends SquidService {
   ...
@@ -212,7 +213,7 @@ export class ExampleService extends SquidService {
     const now = new Date();
     const id = crypto.randomUUID();
 
-    await this.squid.collection("todos").doc({ id }).insert({
+    await this.squid.collection<Todo>("todos").doc({ id }).insert({
       title,
       content,
       createdAt: now,
@@ -263,12 +264,14 @@ export class ExampleService extends SquidService {
       threadId,
       `Create some todos for the following task: ${task}`,
     );
+
+    await assistant.deleteThread(threadId);
+    await assistant.deleteAssistant(assistantId);
   }
 }
 ```
 
-In the assistants we've created above, we've passed it a `createTodoFromAssistant` function. This is the function we expect the assistant to call when it attempts to create
-todo items. Let's define that below, using the same `createTodo` helper we definde in the previous step:
+In the assistant we've created above, we've passed it a `createTodoFromAssistant` function. This is the function we expect the assistant to call when it attempts to create todo items. Let's define that below, using the same `createTodoInternal` helper we defined in the previous webhook step:
 
 ```typescript
 export class ExampleService extends SquidService {
@@ -312,3 +315,7 @@ const App = () => {
   ...
 }
 ```
+
+## New Step!
+
+Testing!

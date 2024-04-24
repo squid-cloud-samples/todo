@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 import "./AddTodo.scss";
+import { Todo } from "../../../common/types";
 
 const customStyles = {
   content: {
@@ -16,10 +17,7 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-type FormValues = {
-  title: string;
-  content: string;
-};
+type FormValues = Pick<Todo, "title" | "content">;
 
 type PropTypes = {
   onCreate: (data: FormValues) => void;
@@ -59,7 +57,7 @@ const AddTodo = ({ onCreate }: PropTypes) => {
           </label>
           <label>
             Content
-            <textarea rows="5" {...register("content")} />
+            <textarea rows={5} {...register("content")} />
           </label>
           <div className="create-modal__buttons">
             <button type="submit">Add</button>

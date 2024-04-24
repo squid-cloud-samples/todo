@@ -1,14 +1,15 @@
 import dayjs from "dayjs";
 import "./TodoCard.scss";
+import { Todo } from "../../../common/types";
 
 type PropTypes = {
-  todo: any;
+  todo: Todo;
   onDelete: (id: string) => void;
   onToggle: (id: string, done: boolean) => void;
 };
 
 const TodoCard = ({ todo, onDelete, onToggle }: PropTypes) => {
-  const { __id, id, title, content, createdAt, updatedAt, done } = todo;
+  const { id, title, content, createdAt, updatedAt, done } = todo;
 
   return (
     <div className={`todo-card ${done ? "done" : ""}`}>
@@ -26,9 +27,9 @@ const TodoCard = ({ todo, onDelete, onToggle }: PropTypes) => {
         <input
           type="checkbox"
           checked={done}
-          onChange={() => onToggle(id || __id, !done)}
+          onChange={() => onToggle(id, !done)}
         />
-        <button onClick={() => onDelete(id || __id)}>X</button>
+        <button onClick={() => onDelete(id)}>X</button>
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
 import TodoCard from "./TodoCard";
 import "./TodoList.scss";
-import { useMemo } from "react";
+import { Todo } from "../../../common/types";
 
 type PropTypes = {
-  todos: Array<any>;
+  todos: Array<Todo>;
   onDelete: (id: string) => void;
   onToggle: (id: string, done: boolean) => void;
 };

@@ -38,7 +38,7 @@ const CreateWithAI = ({ onCreateWithAI }: PropTypes) => {
 
   const [creating, setCreating] = useState(false);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormValues) => {
     closeModal();
     setCreating(true);
     await onCreateWithAI(data);
