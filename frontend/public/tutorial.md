@@ -8,12 +8,12 @@
 Querying for todos. In `App.tsx` add the following:
 
 ```tsx
-import { useCollection } from "@squidcloud/react"
+import { useCollection, useQuery } from "@squidcloud/react"
 
 const App = () => {
   const collection = useCollection('todos');
   // Replace `const data = []` with the following line:
-  const { data } = useQuery(collection.query());
+  const { data } = useQuery(collection.query().dereference());
 
   ...
 }
@@ -42,6 +42,8 @@ const App = () => {
 };
 ```
 
+Now test out the "Add Todo" button!
+
 ## Updating a Todo
 
 In `App.tsx`
@@ -51,10 +53,24 @@ const App = () => {
   ...
 
   const handleToggle = async (id: string, done: boolean) => {
-    await collection.doc({id}).update({
+    await collection.doc({ id }).update({
       done,
       updatedAt: new Date()
     });
+  };
+
+  ...
+}
+```
+
+And to delete a todo:
+
+```tsx
+const App = () => {
+  ...
+
+  const handleDelete = async (id: string) => {
+    await collection.doc({ id }).delete();
   };
 
   ...

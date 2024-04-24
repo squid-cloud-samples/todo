@@ -11,12 +11,12 @@ function App() {
     console.log("handleCreate", title, content)
   };
 
-  const handleDelete = async (id: string) => {
-    console.log("handleDelete", id);
-  };
-
   const handleToggle = async (id: string, done: boolean) => {
     console.log("handleToggle", id, done);
+  };
+
+  const handleDelete = async (id: string) => {
+    console.log("handleDelete", id);
   };
 
   const handleCleanTodos = async () => {
