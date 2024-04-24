@@ -1,0 +1,28 @@
+.create-modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 80vw;
+  max-width: 500px;
+
+  label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    font: inherit;
+  }
+
+  textarea {
+    font: inherit;
+    font-size: inherit;
+  }
+}
+
+.create-modal__buttons {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+}

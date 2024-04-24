@@ -1,0 +1,3 @@
+[build]
+command = "mkdir emptyDeployDir && ./node_modules/.bin/squid deploy"
+publish = "emptyDeployDir"
