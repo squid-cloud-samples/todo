@@ -4,7 +4,7 @@ Welcome to your first Squid project! Through a few simple steps, you will add fu
 
 1. In the [Squid Cloud Console](https://console.squid.cloud) create a new app called `todo`.
 
-2. To initialize Squid in a client app, you must provide some details about your Squid application. In the `main.tsx` file of the frontend, update the options passed to `SquidContextProvider` with your `appId` and `squidDeveloperId`. You can find these values in the [Squid Cloud Console](https://console.squid.cloud):
+2. To initialize Squid in a client app, you must provide some details about your Squid application. In the `main.tsx` file of the frontend, update the options passed to `SquidContextProvider` with your `appId` and `squidDeveloperId`. You can find these values in the application overview page of the [Squid Cloud Console](https://console.squid.cloud):
 
 ```typescript
 ...
@@ -19,7 +19,9 @@ Welcome to your first Squid project! Through a few simple steps, you will add fu
 ...  
 ```
 
-3. In the [Squid Cloud Console](https://console.squid.cloud), scroll to the **Backend project** section and click **Create .env vars**. 
+3. In the [Squid Cloud Console](https://console.squid.cloud), scroll to the **Backend project** section and click **Create .env file**. 
+
+<img src="./copy_env.gif" alt="drawing" width="500"/>
 
 4. Open a new terminal window. You should now have two terminal windows open: one running the frontend of this app as instructed in the README, and another window that will run the backend. Copy the command to install the Squid CLI, and then run it in the terminal:
 
@@ -35,7 +37,7 @@ The Squid CLI lets you run your Squid projects locally during development and te
 cd backend
 ```
 
-6. Copy the command to create the `.env` file that's shown in the **Backend project** section of the Squid Cloud Console, and then run it in the `backend` directory. The script has the following format:
+6. Copy the command to create the `.env` file that's shown in the **Backend project** section of the Squid Cloud Console, and then run it in the `backend` directory. The command has the following format:
 
 ```bash
 squid init-env \
@@ -56,7 +58,7 @@ Your Squid backend is now running locally for development and testing! Click **N
 
 ## Creating a To-do
 
-Right now, the **Add Todo** button displays a modal for adding a new to-do to the list, but currently, saving a to-do does not produce any effect. Let's add some code that writes new to-do tasks to Squid's [built-in database](https://docs.squid.cloud/docs/integrations/database/built-in) and also listens for updates to the to-dos.
+Right now, the **Add Todo** button displays a modal for adding a new to-do to the list, but saving a to-do does not produce any effect. Let's add some code that writes new to-do tasks to Squid's [built-in database](https://docs.squid.cloud/docs/integrations/database/built-in) and also listens for updates to the to-dos.
 
 1. Squid provides [React hooks](https://docs.squid.cloud/docs/development-tools/react-sdk#hooks) to easily subscribe to data changes so the view always stays up-to-date. In `App.tsx` add the following code to implement the `useQuery` hook so the latest to-dos always appear:
 
@@ -99,7 +101,7 @@ Now test out the **Add Todo** button! Notice as you add new to-dos, they appear 
 
 ## Updating a To-do
 
-1. To update the contents of an existing to-do, we use the `update` method of the [Squid Client SDK](https://docs.squid.cloud/docs/development-tools/client-sdk/mutations#update). In `App.tsx`, update the `handleToggle` function with the following code:
+1. To update the status of an existing to-do, we use the `update` method of the [Squid Client SDK](https://docs.squid.cloud/docs/development-tools/client-sdk/mutations#update). In `App.tsx`, update the `handleToggle` function with the following code:
 
 ```tsx
 const App = () => {
@@ -336,7 +338,7 @@ export class ExampleService extends SquidService {
 }
 ```
 
-2. Upon saving the file, in the output of the locally running backend, a log appers with a format similar to the following:
+2. Upon saving the file, in the output of the locally running backend, a log appears with a format similar to the following:
 
 ```bash
 Webhook URL for createTodo: https://{appId}-dev-{developerId}.us-east-1.aws.squid.cloud/webhooks/createTodo
