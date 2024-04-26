@@ -21,8 +21,6 @@ Welcome to your first Squid project! Through a few simple steps, you will add fu
 
 3. In the [Squid Cloud Console](https://console.squid.cloud), scroll to the **Backend project** section and click **Create .env file**. 
 
-<img src="./copy_env.gif" alt="drawing" width="500"/>
-
 4. Open a new terminal window. You should now have two terminal windows open: one running the frontend of this app as instructed in the README, and another window that will run the backend. Copy the command to install the Squid CLI, and then run it in the terminal:
 
 ```bash
