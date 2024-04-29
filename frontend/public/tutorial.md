@@ -452,13 +452,13 @@ To finish up your first Squid project, click **Next**.
 
 Nice work! You just added multiple new features to a full-stack application in minutes. Here's a summary of the Squid features you used:
 
-- Squid's [Built-in database integration](https://docs.squid.cloud/docs/integrations/database/built-in): Squid integrates with any database, but we also provide a built-in NoSQL database with every project to get up and running quickly.
-- Squid's [React SDK hooks](https://docs.squid.cloud/docs/development-tools/react-sdk#hooks): Wrappers for features of the Squid Client SDK for easy implementation in React apps. Squid also provides an [Angular SDK](https://docs.squid.cloud/docs/development-tools/angular-sdk) to easily integrate Squid in your Angular apps.
-- [Squid Executables](https://docs.squid.cloud/docs/development-tools/backend/executables): Used for accessing server-side functionality from a client.
-- [Squid Schedulers](https://docs.squid.cloud/docs/development-tools/backend/schedulers): Run Cron Jobs from the Squid backend.
-- [Webhooks](https://docs.squid.cloud/docs/development-tools/backend/webhooks): Trigger functionality when a URL is called. Webhooks are primarily used to facilitate communication with external services.
-- [Squid AI Assistant](https://docs.squid.cloud/docs/ai/squid-ai-assistant): Create unique AI experiences for clients, including the ability to trigger AI functions based on client queries.
+- Squid's [Built-in database integration](https://bit.ly/44f3Zyt?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding): Squid integrates with any database, but we also provide a built-in NoSQL database with every project to get up and running quickly.
+- Squid's [React SDK hooks](https://bit.ly/squid-hooks?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding): Wrappers for features of the Squid Client SDK for easy implementation in React apps. Squid also provides an [Angular SDK](https://bit.ly/squid-ang?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding) to easily integrate Squid in your Angular apps.
+- [Squid Executables](https://bit.ly/squid-executables?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding): Used for accessing server-side functionality from a client.
+- [Squid Schedulers](https://bit.ly/squid-cron?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding): Run Cron Jobs from the Squid backend.
+- [Webhooks](https://bit.ly/squid-webhooks?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding): Trigger functionality when a URL is called. Webhooks are primarily used to facilitate communication with external services.
+- [Squid AI Assistant](https://bit.ly/squid-ai-assistant?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding): Create unique AI experiences for clients, including the ability to trigger AI functions based on client queries.
 
-There are plenty more features of Squid to explore, so [check out our tutorials](https://docs.squid.cloud/docs/tutorials) for more inspiration and step-by-step instructions, [view the docs on integrations](https://docs.squid.cloud/docs/integrations/) to find out how to integrate your favorite database or service with Squid, or [surf our YouTube channel](https://www.youtube.com/@Squid-Cloud) for tutorials and demos.
+There are plenty more features of Squid to explore, so [check out our tutorials](https://bit.ly/squid-tutorials?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding) for more inspiration and step-by-step instructions, [view the docs on integrations](https://bit.ly/3sgnwzT?utm_source=onboarding&utm_medium=todo-app&utm_campaign=onboarding) to find out how to integrate your favorite database or service with Squid, or [surf our YouTube channel](https://bit.ly/squid-yt) for tutorials and demos.
 
-To chat with the Squid Crew and other Squid developers, [join our Discord server](https://discord.gg/byu62gdtpU).
+To chat with the Squid Crew and other Squid developers, [join our Discord server](https://bit.ly/squid-HELP).
