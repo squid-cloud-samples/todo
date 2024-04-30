@@ -81,7 +81,7 @@ const App = () => {
   const handleCreate = async (data: Pick<Todo, "title" | "content">) => {
     const { title, content } = data;
     const now = new Date();
-    const id = crypto.randomUUID() 
+    const id = crypto.randomUUID()
 
     await collection.doc({ id }).insert({
       id,
@@ -144,7 +144,6 @@ To access server-side functionality from the client, use [Squid Executables](htt
 import {
   secureDatabase,
   SquidService,
-  TriggerRequest,
   executable
 } from "@squidcloud/backend";
 ...
@@ -206,7 +205,6 @@ A [Scheduler](https://docs.squid.cloud/docs/development-tools/backend/schedulers
 import {
   secureDatabase,
   SquidService,
-  TriggerRequest,
   executable,
   scheduler
 } from "@squidcloud/backend";
