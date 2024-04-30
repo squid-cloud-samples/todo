@@ -38,30 +38,37 @@ const AddTodo = ({ onCreate }: PropTypes) => {
 
   return (
     <div>
-      <button onClick={openModal}>Add Todo</button>
+      <button className="sq-btn" onClick={openModal}>
+        Add Todo
+      </button>
       <Modal
+        className="sq-modal__content"
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
       >
         <form
-          className="create-modal__content"
+          className="sq-card create-modal__content"
           onSubmit={handleSubmit(async (data) => {
             await onCreate(data);
             closeModal();
           })}
         >
-          <label>
-            Title
+          <div className="sq-input">
+            <label> Title</label>
             <input {...register("title")} />
-          </label>
-          <label>
-            Content
+          </div>
+          <div className="sq-input">
+            <label>Content</label>
             <textarea rows={5} {...register("content")} />
-          </label>
+          </div>
           <div className="create-modal__buttons">
-            <button type="submit">Add</button>
-            <button onClick={closeModal}>Close</button>
+            <button className="sq-btn" type="submit">
+              Add
+            </button>
+            <button className="sq-btn sq-btn--outline" onClick={closeModal}>
+              Close
+            </button>
           </div>
         </form>
       </Modal>

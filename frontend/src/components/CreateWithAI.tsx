@@ -47,25 +47,27 @@ const CreateWithAI = ({ onCreateWithAI }: PropTypes) => {
 
   return (
     <>
-      <button onClick={openModal} disabled={creating}>
+      <button className="sq-btn sq-btn--secondary" onClick={openModal} disabled={creating}>
         {creating ? "Creating..." : "Create With AI"}
       </button>
       <Modal
+        className="sq-modal__content"
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <form
-          className="create-modal__content"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <label>
-            Task
+        <form className="sq-card" onSubmit={handleSubmit(onSubmit)}>
+          <div className="sq-input" style={{ width: "100%" }}>
+            <label>Task</label>
             <input {...register("task")} />
-          </label>
+          </div>
           <div className="create-modal__buttons">
-            <button type="submit">Add</button>
-            <button onClick={closeModal}>Close</button>
+            <button className="sq-btn" type="submit">
+              Add
+            </button>
+            <button className="sq-btn sq-btn--outline" onClick={closeModal}>
+              Close
+            </button>
           </div>
         </form>
       </Modal>

@@ -2,6 +2,8 @@ import dayjs from "dayjs";
 import "./TodoCard.scss";
 import { Todo } from "../../../common/types";
 
+import TrashIcon from "@squidcloud/ui/icons/trash.svg";
+
 type PropTypes = {
   todo: Todo;
   onDelete: (id: string) => void;
@@ -12,9 +14,11 @@ const TodoCard = ({ todo, onDelete, onToggle }: PropTypes) => {
   const { id, title, content, createdAt, updatedAt, done } = todo;
 
   return (
-    <div className={`todo-card ${done ? "done" : ""}`}>
+    <div
+      className={`sq-card sq-card--elevation2 todo-card ${done ? "done" : ""}`}
+    >
       <div className="todo-card__content">
-        <span>{title}</span>
+        <h4>{title}</h4>
         <span>{content}</span>
         <span className="todo-card__created">
           Created At: {dayjs(createdAt).format("MMM DD h:mm:ssa")}
@@ -29,7 +33,9 @@ const TodoCard = ({ todo, onDelete, onToggle }: PropTypes) => {
           checked={done}
           onChange={() => onToggle(id, !done)}
         />
-        <button onClick={() => onDelete(id)}>X</button>
+        <button onClick={() => onDelete(id)}>
+          <img src={TrashIcon} width={32} className="sq-icon sq-icon--gray" />
+        </button>
       </div>
     </div>
   );

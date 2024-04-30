@@ -4,5 +4,5 @@ export type Todo = {
   content: string;
   createdAt: Date;
   updatedAt: Date;
-  done: boolean
-}
+  done: boolean;
+};
