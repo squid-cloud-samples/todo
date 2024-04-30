@@ -1,10 +1,8 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css";
 
-import { Tutorial } from "@squidcloud/samples/react";
 import { SquidContextProvider } from "@squidcloud/react";
+import { Tutorial } from "@squidcloud/samples/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <SquidContextProvider
@@ -15,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       squidDeveloperId: 'YOUR_SQUID_DEVELOPER_ID',
     }}
   >
-    <Tutorial path="./tutorial.md" />
+    <Tutorial title="todo" />
     <App />
   </SquidContextProvider>,
 );

@@ -1,4 +1,6 @@
 import "./App.css";
+import "@squidcloud/ui/styles/index.css";
+
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 import CreateWithAI from "./components/CreateWithAI";
@@ -33,7 +35,9 @@ function App() {
     <>
       <div className="app-buttons">
         <AddTodo onCreate={handleCreate} />
-        <button onClick={handleCleanTodos}>Clean Todos</button>
+        <button className="sq-btn sq-btn--secondary" onClick={handleCleanTodos}>
+          Clean Todos
+        </button>
         <CreateWithAI onCreateWithAI={handleCreateWithAI} />
       </div>
 

@@ -16,10 +16,10 @@ Welcome to your first Squid project! Through a few simple steps, you will add fu
       squidDeveloperId: 'YOUR_SQUID_DEVELOPER_ID', // Update the developer ID
     }}
   >
-...  
+...
 ```
 
-3. In the [Squid Cloud Console](https://console.squid.cloud), scroll to the **Backend project** section and click **Create .env file**. 
+3. In the [Squid Cloud Console](https://console.squid.cloud), scroll to the **Backend project** section and click **Create .env file**.
 
 4. Open a new terminal window. You should now have two terminal windows open: one running the frontend of this app as instructed in the README, and another window that will run the backend. Copy the command to install the Squid CLI, and then run it in the terminal:
 
@@ -78,11 +78,13 @@ const App = () => {
 const App = () => {
   ...
 
-  const handleCreate = async (data) => {
+  const handleCreate = async (data: Pick<Todo, "title" | "content">) => {
     const { title, content } = data;
     const now = new Date();
+    const id = crypto.randomUUID() 
 
-    await collection.doc({ id: crypto.randomUUID() }).insert({
+    await collection.doc({ id }).insert({
+      id,
       title,
       content,
       createdAt: now,
@@ -256,7 +258,7 @@ import {
   TriggerRequest,
   executable,
   scheduler,
-  trigger, 
+  trigger,
   TriggerRequest
 } from "@squidcloud/backend";
 ...
@@ -286,7 +288,7 @@ To add a Webhook that creates a new to-do, click **Next**.
 
 ## Adding a Webhook
 
-A [Webhook](https://docs.squid.cloud/docs/development-tools/backend/webhooks) is a type of event-driven architecture that allows one web application to communicate with another. In order to integrate your Squid project with external services, sometimes those services will communicate using Webhooks. For example, a payment service might provide webhooks to inform you about events like generating invoices and paying balances.  
+A [Webhook](https://docs.squid.cloud/docs/development-tools/backend/webhooks) is a type of event-driven architecture that allows one web application to communicate with another. In order to integrate your Squid project with external services, sometimes those services will communicate using Webhooks. For example, a payment service might provide webhooks to inform you about events like generating invoices and paying balances.
 
 1. In the `example-service.ts` file of the backend, update the code to include the following:
 
@@ -297,10 +299,11 @@ import {
   TriggerRequest,
   executable,
   scheduler,
-  trigger, 
+  trigger,
   TriggerRequest,
-  webhook, 
-  WebhookRequest, 
+  crypto,
+  webhook,
+  WebhookRequest,
   WebhookResponse
 } from "@squidcloud/backend";
 ...
@@ -324,6 +327,7 @@ export class ExampleService extends SquidService {
     const id = crypto.randomUUID();
 
     await this.squid.collection<Todo>("todos").doc({ id }).insert({
+      id,
       title,
       content,
       createdAt: now,
@@ -365,10 +369,11 @@ import {
   TriggerRequest,
   executable,
   scheduler,
-  trigger, 
+  trigger,
   TriggerRequest,
-  webhook, 
-  WebhookRequest, 
+  crypto,
+  webhook,
+  WebhookRequest,
   WebhookResponse,
   aiFunction
 } from "@squidcloud/backend";
@@ -435,7 +440,7 @@ export class ExampleService extends SquidService {
 const App = () => {
   ...
 
-  const handleCreateWithAI = async (data) => {
+  const handleCreateWithAI = async (data: { task: string }) => {
     const { task } = data;
     await squid.executeFunction("createTodosWithAI", task);
   };
@@ -448,7 +453,7 @@ To test this functionality, click **Create with AI** and provide a task descript
 
 To finish up your first Squid project, click **Next**.
 
-## Congratulations! 
+## Congratulations!
 
 Nice work! You just added multiple new features to a full-stack application in minutes. Here's a summary of the Squid features you used:
 
