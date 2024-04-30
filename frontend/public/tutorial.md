@@ -81,7 +81,7 @@ const App = () => {
   const handleCreate = async (data: Pick<Todo, "title" | "content">) => {
     const { title, content } = data;
     const now = new Date();
-    const id = crypto.randomUUID()
+    const id = crypto.randomUUID();
 
     await collection.doc({ id }).insert({
       id,
