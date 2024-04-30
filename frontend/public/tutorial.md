@@ -52,13 +52,13 @@ squid init-env \
 squid start
 ```
 
-Your Squid backend is now running locally for development and testing! Click **Next** to continue to the next step where you add your fist Squid functionality to this app.
+Your Squid backend is now running locally for development and testing! Click **Next** to continue to the next step where you add your first Squid functionality to this app.
 
 ## Creating a To-do
 
 Right now, the **Add Todo** button displays a modal for adding a new to-do to the list, but saving a to-do does not produce any effect. Let's add some code that writes new to-do tasks to Squid's [built-in database](https://docs.squid.cloud/docs/integrations/database/built-in) and also listens for updates to the to-dos.
 
-1. Squid provides [React hooks](https://docs.squid.cloud/docs/development-tools/react-sdk#hooks) to easily subscribe to data changes so the view always stays up-to-date. In `App.tsx` add the following code to implement the `useQuery` hook so the latest to-dos always appear:
+1. Squid provides [React hooks](https://docs.squid.cloud/docs/development-tools/react-sdk#hooks) to easily subscribe to data changes so the view always stays up-to-date. In the `App.tsx` file of the frontend, add the following code to implement the `useQuery` hook so the latest to-dos always appear:
 
 ```tsx
 import { useCollection, useQuery } from "@squidcloud/react"
@@ -138,7 +138,7 @@ Try updating and deleting to-dos in the app to see these features in action. To 
 
 To access server-side functionality from the client, use [Squid Executables](https://docs.squid.cloud/docs/development-tools/backend/executables). Let's add an Executable that cleans up the to-do list by querying all of the to-dos that are marked as "done", and then deleting them from the database.
 
-1. In the `backend/src/services/example-service.ts` file, update the code to include the following:
+1. In the `backend/src/service/example-service.ts` file, update the code to include the following:
 
 ```typescript
 import {
@@ -255,7 +255,6 @@ const App = () => {
 import {
   secureDatabase,
   SquidService,
-  TriggerRequest,
   executable,
   scheduler,
   trigger,
@@ -296,12 +295,10 @@ A [Webhook](https://docs.squid.cloud/docs/development-tools/backend/webhooks) is
 import {
   secureDatabase,
   SquidService,
-  TriggerRequest,
   executable,
   scheduler,
   trigger,
   TriggerRequest,
-  crypto,
   webhook,
   WebhookRequest,
   WebhookResponse
@@ -366,12 +363,10 @@ To add an AI assistant that automatically creates a list of to-dos based on a pr
 import {
   secureDatabase,
   SquidService,
-  TriggerRequest,
   executable,
   scheduler,
   trigger,
   TriggerRequest,
-  crypto,
   webhook,
   WebhookRequest,
   WebhookResponse,
