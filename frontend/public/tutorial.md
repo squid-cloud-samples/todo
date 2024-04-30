@@ -4,19 +4,13 @@ Welcome to your first Squid project! Through a few simple steps, you will add fu
 
 1. In the [Squid Cloud Console](https://console.squid.cloud) create a new app called `todo`.
 
-2. To initialize Squid in a client app, you must provide some details about your Squid application. In the `main.tsx` file of the frontend, update the options passed to `SquidContextProvider` with your `appId` and `squidDeveloperId`. You can find these values in the application overview page of the [Squid Cloud Console](https://console.squid.cloud):
+2. To initialize Squid in a client app, you must provide some details about your Squid application. In the `frontend` directory, create a new file called `.env.local`, and populate it with your `appId`, `region` and `squidDeveloperId`. You can find these values in the application overview page of the [Squid Cloud Console](https://console.squid.cloud):
 
-```typescript
-...
-  <SquidContextProvider
-    options={{
-      appId: 'YOUR_APP_ID', // Update the App ID
-      region: 'us-east-1.aws',
-      environmentId: 'dev',
-      squidDeveloperId: 'YOUR_SQUID_DEVELOPER_ID', // Update the developer ID
-    }}
-  >
-...
+```env
+VITE_SQUID_APP_ID=YOUR_APP_ID # Update the App ID
+VITE_SQUID_REGION=us-east-1.aws
+VITE_SQUID_ENVIRONMENT_ID=dev
+VITE_SQUID_DEVELOPER_ID=YOUR_SQUID_DEVELOPER_ID # Update the developer ID
 ```
 
 3. In the [Squid Cloud Console](https://console.squid.cloud), scroll to the **Backend project** section and click **Create .env file**.
