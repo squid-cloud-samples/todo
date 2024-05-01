@@ -58,7 +58,7 @@ Open a second terminal window. You should now have two terminal windows open: on
 ```bash
 cd frontend
 npm install
-npm run samples-setup-env
+npm run setup-env
 ```
 
 To launch the frontend of your Squid application, run the following command from the `front` directory:
