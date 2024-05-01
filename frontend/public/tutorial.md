@@ -1,54 +1,6 @@
-## Getting Started
+## Creating a To-do
 
 Welcome to your first Squid project! Through a few simple steps, you will add functionality to a full-stack to-do application and learn about some of the features of Squid.
-
-1. In the [Squid Cloud Console](https://console.squid.cloud) create a new app called `todo`.
-
-2. To initialize Squid in a client app, you must provide some details about your Squid application. In the `frontend` directory, create a new file called `.env.local`, and populate it with your `appId`, `region` and `squidDeveloperId`. You can find these values in the application overview page of the [Squid Cloud Console](https://console.squid.cloud):
-
-```env
-VITE_SQUID_APP_ID=YOUR_APP_ID # Update the App ID
-VITE_SQUID_REGION=us-east-1.aws
-VITE_SQUID_ENVIRONMENT_ID=dev
-VITE_SQUID_DEVELOPER_ID=YOUR_SQUID_DEVELOPER_ID # Update the developer ID
-```
-
-3. In the [Squid Cloud Console](https://console.squid.cloud), scroll to the **Backend project** section and click **Create .env file**.
-
-4. Open a new terminal window. You should now have two terminal windows open: one running the frontend of this app as instructed in the README, and another window that will run the backend. Copy the command to install the Squid CLI, and then run it in the terminal:
-
-```bash
-npm install -g @squidcloud/cli
-```
-
-The Squid CLI lets you run your Squid projects locally during development and testing, and then deploy your backend when ready.
-
-5. Navigate to the `backend` directory:
-
-```bash
-cd backend
-```
-
-6. Copy the command to create the `.env` file that's shown in the **Backend project** section of the Squid Cloud Console, and then run it in the `backend` directory. The command has the following format:
-
-```bash
-squid init-env \
---appId YOUR_APP_ID \
---apiKey YOUR_API_KEY \
---environmentId dev \
---squidDeveloperId YOUR_SQUID_DEVELOPER_KEY \
---region us-east-1.aws
-```
-
-7. In the `backend` directory, run the following command:
-
-```bash
-squid start
-```
-
-Your Squid backend is now running locally for development and testing! Click **Next** to continue to the next step where you add your first Squid functionality to this app.
-
-## Creating a To-do
 
 Right now, the **Add Todo** button displays a modal for adding a new to-do to the list, but saving a to-do does not produce any effect. Let's add some code that writes new to-do tasks to Squid's [built-in database](https://docs.squid.cloud/docs/integrations/database/built-in) and also listens for updates to the to-dos.
 
