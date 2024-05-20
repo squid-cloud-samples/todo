@@ -11,14 +11,14 @@ type PropTypes = {
 };
 
 const TodoCard = ({ todo, onDelete, onToggle }: PropTypes) => {
-  const { id, title, content, createdAt, updatedAt, done } = todo;
+  const { __id, title, content, createdAt, updatedAt, done } = todo;
 
   return (
     <div
       className={`sq-card sq-card--elevation2 todo-card ${done ? "done" : ""}`}
     >
       <div className="todo-card__content">
-        <h4>{title}</h4>
+        <h6>{title}</h6>
         <span>{content}</span>
         <span className="todo-card__created">
           Created At: {dayjs(createdAt).format("MMM DD h:mm:ssa")}
@@ -31,9 +31,9 @@ const TodoCard = ({ todo, onDelete, onToggle }: PropTypes) => {
         <input
           type="checkbox"
           checked={done}
-          onChange={() => onToggle(id, !done)}
+          onChange={() => onToggle(__id, !done)}
         />
-        <button onClick={() => onDelete(id)}>
+        <button onClick={() => onDelete(__id)}>
           <img src={TrashIcon} width={32} className="sq-icon sq-icon--gray" />
         </button>
       </div>

@@ -14,7 +14,7 @@ const TodoList = ({ todos, onDelete, onToggle }: PropTypes) => {
       <div className="todo-list__column">
         {todos.map((todo) => (
           <TodoCard
-            key={todo.id}
+            key={todo.__id}
             todo={todo}
             onDelete={onDelete}
             onToggle={onToggle}
