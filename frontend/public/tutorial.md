@@ -27,10 +27,8 @@ const App = () => {
   const handleCreate = async (data: Pick<Todo, "title" | "content">) => {
     const { title, content } = data;
     const now = new Date();
-    const id = crypto.randomUUID();
 
-    await collection.doc({ id }).insert({
-      id,
+    await collection.doc().insert({
       title,
       content,
       createdAt: now,
@@ -54,7 +52,7 @@ const App = () => {
   ...
 
   const handleToggle = async (id: string, done: boolean) => {
-    await collection.doc({ id }).update({
+    await collection.doc(id).update({
       done,
       updatedAt: new Date()
     });
@@ -71,7 +69,7 @@ const App = () => {
   ...
 
   const handleDelete = async (id: string) => {
-    await collection.doc({ id }).delete();
+    await collection.doc(id).delete();
   };
 
   ...
@@ -184,7 +182,7 @@ const App = () => {
   ...
 
   const handleToggle = async (id: string, done: boolean) => {
-    await collection.doc({id}).update({
+    await collection.doc(id).update({
       done,
     });
   };
@@ -217,7 +215,7 @@ export class ExampleService extends SquidService {
     const { docBefore, docAfter } = request;
     if (docBefore.done === docAfter.done) return;
 
-    await this.squid.collection<Todo>("todos").doc({ id: docAfter.id }).update({
+    await this.squid.collection<Todo>("todos").doc(docAfter.id).update({
       updatedAt: new Date(),
     });
   }
@@ -265,10 +263,9 @@ export class ExampleService extends SquidService {
 
   private async createTodoInternal(title: string, content: string): Promise<string> {
     const now = new Date();
-    const id = crypto.randomUUID();
-
-    await this.squid.collection<Todo>("todos").doc({ id }).insert({
-      id,
+    const doc = this.squid.collection<Todo>("todos").doc();
+    
+    await doc.insert({
       title,
       content,
       createdAt: now,
@@ -276,7 +273,7 @@ export class ExampleService extends SquidService {
       done: false,
     });
 
-    return id;
+    return doc.data.__id;
   }
 }
 ```
