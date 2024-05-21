@@ -215,7 +215,7 @@ export class ExampleService extends SquidService {
     const { docBefore, docAfter } = request;
     if (docBefore.done === docAfter.done) return;
 
-    await this.squid.collection<Todo>("todos").doc(docAfter.id).update({
+    await this.squid.collection<Todo>("todos").doc(docAfter.__id).update({
       updatedAt: new Date(),
     });
   }
