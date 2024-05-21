@@ -9,7 +9,7 @@ Right now, the **Add Todo** button displays a modal for adding a new to-do to th
 ```tsx
 import { useCollection, useQuery } from "@squidcloud/react"
 
-const App = () => {
+function App() {
   const collection = useCollection<Todo>('todos');
   // Replace `const data = []` with the following line:
   const { data } = useQuery(collection.query().dereference());
@@ -21,7 +21,7 @@ const App = () => {
 2. To create a new to-do, we use the `insert` method of the [Squid Client SDK](https://docs.squid.cloud/docs/development-tools/client-sdk/mutations#insert). In `App.tsx`, update the `handleCreate` function with the following code:
 
 ```typescript
-const App = () => {
+function App() {
   ...
 
   const handleCreate = async (data: Pick<Todo, "title" | "content">) => {
@@ -48,7 +48,7 @@ Now test out the **Add Todo** button! Notice as you add new to-dos, they appear 
 1. To update the status of an existing to-do, we use the `update` method of the [Squid Client SDK](https://docs.squid.cloud/docs/development-tools/client-sdk/mutations#update). In `App.tsx`, update the `handleToggle` function with the following code:
 
 ```tsx
-const App = () => {
+function App() {
   ...
 
   const handleToggle = async (id: string, done: boolean) => {
@@ -65,7 +65,7 @@ const App = () => {
 2. To delete an existing to-do, use the [`delete`](https://docs.squid.cloud/docs/development-tools/client-sdk/mutations#delete) method. In `App.tsx`, update the `handleDelete` method with the following code:
 
 ```tsx
-const App = () => {
+function App() {
   ...
 
   const handleDelete = async (id: string) => {
@@ -122,7 +122,7 @@ export class ExampleService extends SquidService {
 import { useCollection, useQuery, useSquid } from '@squidcloud/react';
 ...
 
-const App = () => {
+function App() {
   const squid = useSquid();
 
   ...
@@ -137,38 +137,6 @@ const App = () => {
 
 Test the Executable by checking off some to-dos, and then clicking **Clean Todos**. Notice that the checked to-dos disappear from the view.
 
-To add a Scheduler that periodically runs to clean up the to-dos for us, click **Next**.
-
-## Adding a Scheduler
-
-A [Scheduler](https://docs.squid.cloud/docs/development-tools/backend/schedulers) is a type of Squid decorator that sets a function to be executed at regular intervals.
-
-1. To add a Scheduler that automatically cleans up completed to-dos, update the backend code in `backend/src/service/example-service.ts` to include the following:
-
-```typescript
-import {
-  secureDatabase,
-  SquidService,
-  executable,
-  scheduler
-} from "@squidcloud/backend";
-import { CronExpression } from "@squidcloud/client";
-...
-
-export class ExampleService extends SquidService {
-  ...
-
-  @scheduler({
-    cron: CronExpression.EVERY_10_SECONDS
-  })
-  async cleanTodosOnSchedule(): Promise<void> {
-    await this.cleanTodosInternal();
-  }
-}
-```
-
-2. Notice that this Scheduler calls the same `cleanTodosInternal()` function that is called by the executable. In this case, the Scheduler is set to be called every ten seconds, so the to-dos will be checked and deleted at that interval. To test this functionality, create and check off some to-dos in the app. Within ten seconds, the completed to-dos disappear!
-
 To learn how to execute functions in response to database changes, click **Next**.
 
 ## Adding a Trigger
@@ -178,7 +146,7 @@ Squid's [Trigger](https://docs.squid.cloud/docs/development-tools/backend/trigge
 1. In the frontend's `App.tsx` file, remove `updatedAt: new Date()`:
 
 ```tsx
-const App = () => {
+function App() {
   ...
 
   const handleToggle = async (id: string, done: boolean) => {
@@ -224,6 +192,38 @@ export class ExampleService extends SquidService {
 ```
 
 Now whenever a to-do is updated, the date is automatically updated from the backend! Triggers are a great way to take actions that you wouldn't want to make from the client because they are resource-intensive or involve accessing or changing data that the client shouldn't have access to. To test this feature, update an existing to-do and notice that the last updated value changes.
+
+To add a Scheduler that periodically runs to clean up the to-dos for us, click **Next**.
+
+## Adding a Scheduler
+
+A [Scheduler](https://docs.squid.cloud/docs/development-tools/backend/schedulers) is a type of Squid decorator that sets a function to be executed at regular intervals.
+
+1. To add a Scheduler that automatically cleans up completed to-dos, update the backend code in `backend/src/service/example-service.ts` to include the following:
+
+```typescript
+import {
+  secureDatabase,
+  SquidService,
+  executable,
+  scheduler
+} from "@squidcloud/backend";
+import { CronExpression } from "@squidcloud/client";
+...
+
+export class ExampleService extends SquidService {
+  ...
+
+  @scheduler({
+    cron: CronExpression.EVERY_10_SECONDS
+  })
+  async cleanTodosOnSchedule(): Promise<void> {
+    await this.cleanTodosInternal();
+  }
+}
+```
+
+2. Notice that this Scheduler calls the same `cleanTodosInternal()` function that is called by the executable. In this case, the Scheduler is set to be called every ten seconds, so the to-dos will be checked and deleted at that interval. To test this functionality, create and check off some to-dos in the app. Within ten seconds, the completed to-dos disappear!
 
 To add a Webhook that creates a new to-do, click **Next**.
 
@@ -373,7 +373,7 @@ export class ExampleService extends SquidService {
 3. In the frontend's `App.tsx` file, update the code to call the newly defined Executable function from inside `handleCreateWithAI`:
 
 ```tsx
-const App = () => {
+function App() {
   ...
 
   const handleCreateWithAI = async (data: { task: string }) => {
