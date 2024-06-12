@@ -48,7 +48,7 @@ const AddTodo = ({ onCreate }: PropTypes) => {
         style={customStyles}
       >
         <form
-          className="sq-card create-modal__content"
+          className="sq-card p-8 flex flex-col gap-6"
           onSubmit={handleSubmit(async (data) => {
             await onCreate(data);
             closeModal();

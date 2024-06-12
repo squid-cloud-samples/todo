@@ -2,7 +2,11 @@
   "name": "todo",
   "private": true,
   "version": "0.0.0",
+  "scripts": {
+    "start": "samples start"
+  },
   "devDependencies": {
+    "@squidcloud/samples": "^1.0.9",
     "prettier": "^3.2.5"
   },
   "workspaces": [

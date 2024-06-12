@@ -56,7 +56,7 @@ const CreateWithAI = ({ onCreateWithAI }: PropTypes) => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <form className="sq-card" onSubmit={handleSubmit(onSubmit)}>
+        <form className="sq-card p-8 flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="sq-input" style={{ width: "100%" }}>
             <label>Task</label>
             <input {...register("task")} />

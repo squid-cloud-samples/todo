@@ -15,7 +15,7 @@ const TodoCard = ({ todo, onDelete, onToggle }: PropTypes) => {
 
   return (
     <div
-      className={`sq-card sq-card--elevation2 todo-card ${done ? "done" : ""}`}
+      className={`sq-card p-4 sq-card--elevation2 todo-card ${done ? "done" : ""}`}
     >
       <div className="todo-card__content">
         <h6>{title}</h6>
