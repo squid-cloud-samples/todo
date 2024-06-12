@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "npm run start --workspace=backend & npm run dev --workspace=frontend -- --open",
+    "build": "npm run build --workspaces",
     "format": "prettier --write \"./**/src/**/*{ts,js,tsx,jsx,md,mdx}\""
   },
   "devDependencies": {
