@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "samples start"
+    "start": "npm run start --workspace=backend & npm run dev --workspace=frontend -- --open",
+    "format": "prettier --write \"./**/src/**/*{ts,js,tsx,jsx,md,mdx}\""
   },
   "devDependencies": {
-    "@squidcloud/samples": "^1.0.9",
     "prettier": "^3.2.5"
   },
   "workspaces": [
