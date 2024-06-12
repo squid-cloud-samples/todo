@@ -4,7 +4,9 @@ Welcome to your first Squid project! Through a few simple steps, you will add fu
 
 Right now, the **Add Todo** button displays a modal for adding a new to-do to the list, but saving a to-do does not produce any effect. Let's add some code that writes new to-do tasks to Squid's [built-in database](https://docs.squid.cloud/docs/integrations/database/built-in) and also listens for updates to the to-dos.
 
-1. Squid provides [React hooks](https://docs.squid.cloud/docs/development-tools/react-sdk#hooks) to easily subscribe to data changes so the view always stays up-to-date. In the `App.tsx` file of the frontend, add the following code to implement the `useQuery` hook so the latest to-dos always appear:
+1. Open the project in the IDE of your choice.
+
+2. Squid provides [React hooks](https://docs.squid.cloud/docs/development-tools/react-sdk#hooks) to easily subscribe to data changes so the view always stays up-to-date. In the `App.tsx` file of the frontend, add the following code to implement the `useQuery` hook so the latest to-dos always appear:
 
 ```tsx
 import { useCollection, useQuery } from "@squidcloud/react"
@@ -18,7 +20,7 @@ function App() {
 }
 ```
 
-2. To create a new to-do, we use the `insert` method of the [Squid Client SDK](https://docs.squid.cloud/docs/development-tools/client-sdk/mutations#insert). In `App.tsx`, update the `handleCreate` function with the following code:
+3. To create a new to-do, we use the `insert` method of the [Squid Client SDK](https://docs.squid.cloud/docs/development-tools/client-sdk/mutations#insert). In `App.tsx`, update the `handleCreate` function with the following code:
 
 ```typescript
 function App() {
@@ -80,7 +82,9 @@ Try updating and deleting to-dos in the app to see these features in action. To 
 
 ## Creating an Executable
 
-To access server-side functionality from the client, use [Squid Executables](https://docs.squid.cloud/docs/development-tools/backend/executables). Let's add an Executable that cleans up the to-do list by querying all of the to-dos that are marked as "done", and then deleting them from the database.
+To access server-side functionality from the client, use [Squid Executables](https://docs.squid.cloud/docs/development-tools/backend/executables). Executables allow you to provide a client with limited access to backend functionality, ensuring the client can only take the actions you permit.
+
+Let's add an Executable that cleans up the to-do list by querying all of the to-dos that are marked as "done", and then deleting them from the database.
 
 1. In the `backend/src/service/example-service.ts` file, update the code to include the following:
 
@@ -141,9 +145,11 @@ To learn how to execute functions in response to database changes, click **Next*
 
 ## Adding a Trigger
 
-Squid's [Trigger](https://docs.squid.cloud/docs/development-tools/backend/triggers) functionality executes a given function in response to a change in a database. Let's move the functionality that indicates when a to-do was last updated from the client to the backend.
+Squid's [Trigger](https://docs.squid.cloud/docs/development-tools/backend/triggers) functionality executes a given function in response to a change in a database. This feature works with any database connected to Squid, allowing you to extend the functionality of your data source and easily automate tasks.
 
-1. In the frontend's `App.tsx` file, remove `updatedAt: new Date()`:
+Let's implement a trigger that runs when a change is made to any to-do, and then updates the value of `lastUpdated` if the value of `done` has changed.
+
+1. Move the functionality that indicates when a to-do was last updated from the client to the backend. In the frontend's `App.tsx` file, remove `updatedAt: new Date()`:
 
 ```tsx
 function App() {
@@ -296,7 +302,7 @@ To add an AI assistant that automatically creates a list of to-dos based on a pr
 
 ## Adding AI
 
-[Squid AI Assistant](https://docs.squid.cloud/docs/ai/squid-ai-assistant) lets you manage AI assistant instances, conversation threads, and context files to create a unique AI experience for users. The AI Assistant is one of many [AI solutions](https://docs.squid.cloud/docs/ai/) offered by Squid.
+[Squid AI Assistant](https://docs.squid.cloud/docs/ai/squid-ai-assistant) lets you manage AI assistant instances, conversation threads, and context files to create AI workflows, automate tasks, or build a unique AI experience for users. The AI Assistant is one of many [AI solutions](https://docs.squid.cloud/docs/ai/) offered by Squid.
 
 1. In `example-service.ts` update the code to include the following functionality:
 
