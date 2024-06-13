@@ -7,12 +7,12 @@
   "packageRules": [
     {
       "matchPackagePatterns": ["*"],
-      "excludePackagePatterns": ["@squidcloudio"],
       "enabled": false
     },
     {
       "matchPackageNames": ["@squidcloud/cli", "@squidcloud/backend"],
-      "groupName": "Squid backend dependencies"
+      "groupName": "Squid backend dependencies",
+      "enabled": true
     }
   ]
 }
