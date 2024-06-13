@@ -7,7 +7,12 @@
       "matchUpdateTypes": ["patch"],
       "packageNames": ["@squidcloud/samples", "@squidcloud/cli", "@squidcloud/backend"],
       "groupName": "Squid Dependencies",
+      "updateInternalDeps": true,
       "automerge": true
+    },
+    {
+      "matchDepNames": ["*"],
+      "enabled": false
     }
   ]
 }
