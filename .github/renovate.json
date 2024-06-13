@@ -1,0 +1,20 @@
+{
+  "extends": ["config:base"],
+  "automerge": true,
+  "automergeType": "pr",
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "packageNames": ["@squidcloud/samples", "@squidcloud/cli", "@squidcloud/backend"],
+      "groupName": "Squid Dependencies",
+      "automerge": true
+    }
+  ],
+  "npm": {
+    "enabled": true,
+    "fileMatch": ["^.+\\.json$"],
+    "packageFileList": [
+      "package.json"
+    ]
+  }
+}
