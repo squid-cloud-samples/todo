@@ -6,15 +6,17 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "matchPackagePatterns": ["*"],
+      "matchPackagePatterns": ["!(@squidcloud/*)"],
       "enabled": false
     },
     {
-      "matchPackageNames": ["@squidcloud/samples", "@squidcloud/cli", "@squidcloud/backend"],
-      "groupName": "@squidcloud dependencies",
-      "enabled": true,
-      "matchUpdateTypes": ["patch"],
+      "matchPackageNames": ["@squidcloud/react", "@squidcloud/cli", "@squidcloud/backend"],
+      "groupName": "@squidcloud core dependencies",
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["@squidcloud/samples", "@squidcloud/ui"],
+      "groupName": "@squidcloud sample dependencies"
     }
   ]
 }
