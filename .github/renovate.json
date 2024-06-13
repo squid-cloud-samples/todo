@@ -9,12 +9,5 @@
       "groupName": "Squid Dependencies",
       "automerge": true
     }
-  ],
-  "npm": {
-    "enabled": true,
-    "fileMatch": ["^.+\\.json$"],
-    "packageFileList": [
-      "package.json"
-    ]
-  }
+  ]
 }
