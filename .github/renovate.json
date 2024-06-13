@@ -1,10 +1,10 @@
 {
-  "extends": ["config:base"],
   "automerge": true,
   "automergeType": "pr",
   "labels": ["dependencies"],
   "packageRules": [
     {
+      "matchUpdateTypes": ["patch"],
       "packageNames": ["@squidcloud/samples", "@squidcloud/cli", "@squidcloud/backend"],
       "groupName": "Squid Dependencies",
       "automerge": true
