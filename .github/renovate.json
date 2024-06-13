@@ -6,14 +6,15 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch"],
-      "packageNames": ["@squidcloud/samples", "@squidcloud/cli", "@squidcloud/backend"],
-      "groupName": "@squidcloud dependencies",
-      "automerge": true
+      "matchPackagePatterns": ["*"],
+      "enabled": false
     },
     {
-      "matchDepPatterns": ["*"],
-      "enabled": false
+      "matchPackageNames": ["@squidcloud/samples", "@squidcloud/cli", "@squidcloud/backend"],
+      "groupName": "@squidcloud dependencies",
+      "enabled": true,
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
     }
   ]
 }
