@@ -3,16 +3,16 @@
   "automerge": true,
   "automergeType": "pr",
   "labels": ["dependencies"],
+  "rangeStrategy": "bump",
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
       "packageNames": ["@squidcloud/samples", "@squidcloud/cli", "@squidcloud/backend"],
-      "groupName": "Squid Dependencies",
-      "updateInternalDeps": true,
+      "groupName": "@squidcloud dependencies",
       "automerge": true
     },
     {
-      "matchDepNames": ["*"],
+      "matchDepPatterns": ["*"],
       "enabled": false
     }
   ]
