@@ -6,7 +6,7 @@
     "start": "samples start"
   },
   "devDependencies": {
-    "@squidcloud/samples": "^1.0.9",
+    "@squidcloud/samples": "^1.0.11",
     "prettier": "^3.2.5"
   },
   "workspaces": [
