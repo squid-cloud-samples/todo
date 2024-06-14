@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "samples start"
+    "start": "samples start",
+    "build": "npm run build --workspaces"
   },
   "devDependencies": {
     "@squidcloud/samples": "^1.0.11",
