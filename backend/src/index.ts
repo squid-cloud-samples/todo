@@ -1,4 +1,4 @@
-import { SquidProject } from '@squidcloud/backend';
+import { SquidProject } from "@squidcloud/backend";
 
 /*****************************
  *                           *
@@ -8,7 +8,7 @@ import { SquidProject } from '@squidcloud/backend';
  *****************************/
 
 /** Export all the Squid services */
-export * from './service';
+export * from "./service";
 
 class ExportedSquidProject extends SquidProject {}
 

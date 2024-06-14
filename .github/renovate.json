@@ -14,5 +14,6 @@
       "groupName": "Squid backend dependencies",
       "enabled": true
     }
-  ]
+  ],
+  "schedule": "every weekday"
 }

@@ -270,7 +270,7 @@ export class ExampleService extends SquidService {
   private async createTodoInternal(title: string, content: string): Promise<string> {
     const now = new Date();
     const doc = this.squid.collection<Todo>("todos").doc();
-    
+
     await doc.insert({
       title,
       content,
