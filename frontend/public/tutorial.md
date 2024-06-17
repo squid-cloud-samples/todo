@@ -120,7 +120,7 @@ export class ExampleService extends SquidService {
 }
 ```
 
-2. To call the Executable from the client, use the Squid Client SDK's `executeFunction` method. Inside of in `App.tsx` in the frontend, update the functionality to include the following:
+2. To call the Executable from the client, use the Squid Client SDK's `executeFunction` method. Inside of `App.tsx` in the frontend, update the functionality to include the following:
 
 ```tsx
 import { useCollection, useQuery, useSquid } from '@squidcloud/react';
@@ -172,7 +172,6 @@ import {
   secureDatabase,
   SquidService,
   executable,
-  scheduler,
   trigger,
   TriggerRequest
 } from "@squidcloud/backend";
@@ -212,6 +211,8 @@ import {
   secureDatabase,
   SquidService,
   executable,
+  trigger,
+  TriggerRequest,
   scheduler
 } from "@squidcloud/backend";
 import { CronExpression } from "@squidcloud/client";
@@ -244,9 +245,9 @@ import {
   secureDatabase,
   SquidService,
   executable,
-  scheduler,
   trigger,
   TriggerRequest,
+  scheduler,
   webhook,
   WebhookRequest,
   WebhookResponse
@@ -311,9 +312,9 @@ import {
   secureDatabase,
   SquidService,
   executable,
-  scheduler,
   trigger,
   TriggerRequest,
+  scheduler,
   webhook,
   WebhookRequest,
   WebhookResponse,
@@ -329,7 +330,7 @@ export class ExampleService extends SquidService {
     const assistant = this.squid.ai().assistant();
     const assistantId = await assistant.createAssistant(
       "todoCreator",
-      "Your are designed to create todo list items based on the specified task. You should create anywhere between 3-5 todos.",
+      "You are designed to create todo list items based on the specified task. You should create anywhere between 3-5 todos.",
       ["createTodoFromAssistant"],
     );
     const threadId = await assistant.createThread(assistantId);
