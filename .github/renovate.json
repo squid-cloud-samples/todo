@@ -1,0 +1,19 @@
+{
+  "extends": ["config:base"],
+  "automerge": true,
+  "automergeType": "pr",
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["@squidcloud/cli", "@squidcloud/backend"],
+      "groupName": "Squid backend dependencies",
+      "enabled": true
+    }
+  ],
+  "schedule": "every weekday"
+}
