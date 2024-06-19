@@ -8,7 +8,6 @@ For this project you will need:
 
 - NodeJS v18 or later.
 - A Squid Cloud account and a Squid application. To sign up for Squid, go to [Squid Cloud Console](https://console.squid.cloud). Once signed up, you can create an application.
-- The Squid Cloud CLI (`npm i @squidcloud/cli`).
 
 ## Environment configuration
 
@@ -26,12 +25,7 @@ npm install
 Run the initialization command you copied from the console. The command has the following format:
 
 ```bash
-squid init-env \
- --appId YOUR_APP_ID \
- --apiKey YOUR_API_KEY \
- --environmentId YOUR_ENVIRONMENT_ID \
- --squidDeveloperId YOUR_SQUID_DEVELOPER_ID \
- --region YOUR_REGION
+npx @squidcloud/cli init-env --appId YOUR_APP_ID --apiKey YOUR_API_KEY --environmentId YOUR_ENVIRONMENT_ID --squidDeveloperId YOUR_SQUID_DEVELOPER_ID --region YOUR_REGION
 ```
 
 ## Running the application
@@ -41,13 +35,12 @@ squid init-env \
 To launch the local backend server of your Squid application, run the following command from the `backend` directory:
 
 ```bash
-squid start
+npm run start
 ```
 
 You'll see output similar to the following, indicating that your server is up and running:
 
 ```bash
-> nodemon --watch ./src --exec ts-node -r tsconfig-paths/register src/main.ts
 [Nest] 68047  - 03/15/2024, 7:55:23 PM     LOG [NestApplication] Nest application successfully started +1ms
 ```
 
