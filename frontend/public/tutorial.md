@@ -120,7 +120,7 @@ export class ExampleService extends SquidService {
 }
 ```
 
-2. To call the Executable from the client, use the Squid Client SDK's `executeFunction` method. Inside of in `App.tsx` in the frontend, update the functionality to include the following:
+2. To call the Executable from the client, use the Squid Client SDK's `executeFunction` method. Inside of `App.tsx` in the frontend, update the functionality to include the following:
 
 ```tsx
 import { useCollection, useQuery, useSquid } from '@squidcloud/react';
@@ -172,7 +172,6 @@ import {
   secureDatabase,
   SquidService,
   executable,
-  scheduler,
   trigger,
   TriggerRequest
 } from "@squidcloud/backend";
@@ -197,7 +196,7 @@ export class ExampleService extends SquidService {
 }
 ```
 
-Now whenever a to-do is updated, the date is automatically updated from the backend! Triggers are a great way to take actions that you wouldn't want to make from the client because they are resource-intensive or involve accessing or changing data that the client shouldn't have access to. To test this feature, update an existing to-do and notice that the last updated value changes.
+Now whenever a to-do is updated, the date is automatically updated from the backend! Triggers are a great way to take actions that you wouldn't want to make from the client because they are resource-intensive or involve accessing or changing data that the client shouldn't have access to. To test this feature, check or uncheck an existing to-do and notice that the last updated value changes.
 
 To add a Scheduler that periodically runs to clean up the to-dos for us, click **Next**.
 
@@ -212,6 +211,8 @@ import {
   secureDatabase,
   SquidService,
   executable,
+  trigger,
+  TriggerRequest,
   scheduler
 } from "@squidcloud/backend";
 import { CronExpression } from "@squidcloud/client";
@@ -244,9 +245,9 @@ import {
   secureDatabase,
   SquidService,
   executable,
-  scheduler,
   trigger,
   TriggerRequest,
+  scheduler,
   webhook,
   WebhookRequest,
   WebhookResponse
@@ -311,9 +312,9 @@ import {
   secureDatabase,
   SquidService,
   executable,
-  scheduler,
   trigger,
   TriggerRequest,
+  scheduler,
   webhook,
   WebhookRequest,
   WebhookResponse,
@@ -329,7 +330,7 @@ export class ExampleService extends SquidService {
     const assistant = this.squid.ai().assistant();
     const assistantId = await assistant.createAssistant(
       "todoCreator",
-      "Your are designed to create todo list items based on the specified task. You should create anywhere between 3-5 todos.",
+      "You are designed to create todo list items based on the specified task. You should create anywhere between 3-5 todos.",
       ["createTodoFromAssistant"],
     );
     const threadId = await assistant.createThread(assistantId);
